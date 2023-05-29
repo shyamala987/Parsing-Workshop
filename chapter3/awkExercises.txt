@@ -1,11 +1,13 @@
 1) Get your mac address, print it by itself on a line.
   i.e. ifconfig | awk '{}'
+  ifconfig | grep -w "inet" | grep -Fv 127.0.0.1 | awk '{print $2}'
 
 2) Put your mac address in a variable named MACADDY
   hint, use tick marks '`' which is left of your 1 key on a mac.
 
 3) Print the base 10 translation of MACADDY
   i.e. echo $MACADDY | awk '{}'
+  echo $MACADDY | awk 'BEGIN{FS="."}; END{print ($1*256*256*256)+($2*256*256)+($3*256)+$4}'
 
 4) Get your most used commands.
   i.e. history | awk '{}' | sort -rn | head
